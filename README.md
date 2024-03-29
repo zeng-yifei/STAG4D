@@ -8,7 +8,7 @@
     <a href="https://linyou.github.io/">Youtian Lin</a><sup>1</sup>&emsp;
     <a href='https://zhuhao-nju.github.io/home/' target='_blank'>Hao Zhu</a><sup>1</sup>&emsp;
     <a href="https://people.ucas.ac.cn/~huweiming">Weiming Hu</a><sup>2</sup>&emsp;
-    <a href='https://cite.nju.edu.cn/People/Faculty/20190621/i5054.html' target='_blank'>Xun Cao</a><sup>1</sup>
+    <a href='https://cite.nju.edu.cn/People/Faculty/20190621/i5054.html' target='_blank'>Xun Cao</a><sup>1</sup>&emsp;
     <a href='https://yoyo000.github.io/' target='_blank'>Yao Yao</a><sup>1+</sup>&emsp;
 </div>
 <div>
