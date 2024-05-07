@@ -38,7 +38,7 @@ pip install ./simple-knn
 ```
 
 # Video-to-4D
-To generate the examples in the project page, you can download the dataset from google drive[https://drive.google.com/file/d/1YDvhBv6z5SByF_WaTQVzzL9qz3TyEm6a/view?usp=sharing]. Place them in the dataset folder, and run:
+To generate the examples in the project page, you can download the dataset from [google drive](https://drive.google.com/file/d/1YDvhBv6z5SByF_WaTQVzzL9qz3TyEm6a/view?usp=sharing). Place them in the dataset folder, and run:
 ```bash
 python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions
 
@@ -70,6 +70,8 @@ python main.py --config configs/stag4d.yaml path=data_path save_path=saving_path
 <img src='assets/videoto4d.gif' height='60%'>
 
 # Text-to-4D
+For Text to 4D generation, we recommend using SDXL and SVD to generate a reasonable video. Then, after matting the video, use
+the command above to generate a good 4D result. (This pipeline contains many independent parts and is kind of complex, so we may upload the whole workflow after integration if possible.)
 <img src='assets/textto4d3.gif' height='60%'>
 
 ## Citation
