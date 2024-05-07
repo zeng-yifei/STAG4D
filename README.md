@@ -26,20 +26,70 @@
 </h4>
 
 
-# Code to be released soon
+# ⚙️ Installation
+
+```bash
+pip install -r requirements.txt
+
+git clone --recursive https://github.com/slothfulxtx/diff-gaussian-rasterization.git
+pip install ./diff-gaussian-rasterization
+
+pip install ./simple-knn
+```
 
 # Video-to-4D
+To generate the examples in the project page, you can download the dataset from google drive[https://drive.google.com/file/d/1YDvhBv6z5SByF_WaTQVzzL9qz3TyEm6a/view?usp=sharing]. Place them in the dataset folder, and run:
+```bash
+python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions
+
+#use --gui=True to turn on the visualizer (recommend)
+python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions --gui=True
+
+```
+
+To generate the spatial-temporal consistent data from stratch, your should place your rgba data in the form of 
+
+```
+├── dataset
+│   | your_data 
+│     ├── 0_rgba.png
+│     ├── 1_rgba.png
+│     ├── 2_rgba.png
+│     ├── ...
+
+```
+
+and then run 
+```bash
+python scripts/gen_mv.py --path dataset/your_data --pipeline_path xxx/guidance/zero123pp
+
+python main.py --config configs/stag4d.yaml path=data_path save_path=saving_path --gui=True
+```
+
+
 <img src='assets/videoto4d.gif' height='60%'>
 
 # Text-to-4D
 <img src='assets/textto4d3.gif' height='60%'>
 
 ## Citation
-If you find our work useful for your research, please consider citing the paper:
+If you find our work useful for your research, please consider citing our paper as well as Consistent4D:
 ```
 @article{zeng2024stag4d,
-    title={STAG4D: Spatial-Temporal Anchored Generative 4D Gaussians}, 
-    author={Yifei Zeng and Yanqin Jiang and Siyu Zhu and Yuanxun Lu and Youtian Lin and Hao Zhu and Weiming Hu and Xun Cao and Yao Yao},
-    year={2024}
+      title={STAG4D: Spatial-Temporal Anchored Generative 4D Gaussians}, 
+      author={Yifei Zeng and Yanqin Jiang and Siyu Zhu and Yuanxun Lu and Youtian Lin and Hao Zhu and Weiming Hu and Xun Cao and Yao Yao},
+      year={2024},
+      eprint={2403.14939},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@article{jiang2023consistent4d,
+      title={Consistent4D: Consistent 360{\deg} Dynamic Object Generation from Monocular Video}, 
+      author={Yanqin Jiang and Li Zhang and Jin Gao and Weimin Hu and Yao Yao},
+      year={2023},
+      eprint={2311.02848},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
