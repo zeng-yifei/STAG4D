@@ -404,7 +404,7 @@ class GUI:
                     viewspace_point_tensor_grad = viewspace_point_tensor_grad + viewspace_point_tensor_list[idx].grad
 
             if self.step >= self.opt.density_start_iter and self.step <= self.opt.density_end_iter:
-                self.renderer.gaussians.max_radii_plusD[visibility_filter] = torch.max(self.renderer.gaussians.max_radii2D[visibility_filter], radii[visibility_filter])
+                self.renderer.gaussians.max_radii2D[visibility_filter] = torch.max(self.renderer.gaussians.max_radii2D[visibility_filter], radii[visibility_filter])
                 self.renderer.gaussians.add_densification_stats(viewspace_point_tensor_grad, visibility_filter)
                 if self.step % self.opt.densification_interval == 1 :
 
