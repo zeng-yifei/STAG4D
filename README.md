@@ -43,7 +43,7 @@ To generate the examples in the project page, you can download the dataset from 
 python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions
 
 #use --gui=True to turn on the visualizer (recommend)
-python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions --gui=True
+python main.py --config configs/stag4d.yaml path=dataset/minions save_path=minions gui=True
 
 ```
 

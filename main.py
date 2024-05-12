@@ -402,7 +402,8 @@ class GUI:
             viewspace_point_tensor_grad = torch.zeros_like(viewspace_point_tensor)
             for idx in range(0, len(viewspace_point_tensor_list)):
                     viewspace_point_tensor_grad = viewspace_point_tensor_grad + viewspace_point_tensor_list[idx].grad
-
+            radii = torch.cat(radii_list,0).max(dim=0).values
+            visibility_filter = torch.cat(visibility_filter_list).any(dim=0)
             if self.step >= self.opt.density_start_iter and self.step <= self.opt.density_end_iter:
                 self.renderer.gaussians.max_radii2D[visibility_filter] = torch.max(self.renderer.gaussians.max_radii2D[visibility_filter], radii[visibility_filter])
                 self.renderer.gaussians.add_densification_stats(viewspace_point_tensor_grad, visibility_filter)
