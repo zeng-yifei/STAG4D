@@ -63,7 +63,7 @@ and then run
 ```bash
 python scripts/gen_mv.py --path dataset/your_data --pipeline_path xxx/guidance/zero123pp
 
-python main.py --config configs/stag4d.yaml path=data_path save_path=saving_path --gui=True
+python main.py --config configs/stag4d.yaml path=data_path save_path=saving_path gui=True
 ```
 
 

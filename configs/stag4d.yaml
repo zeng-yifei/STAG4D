@@ -24,7 +24,7 @@ load:
 outdir: logs
 mesh_format: obj
 save_path: ???
-save_step: 10000
+save_step: 8000
 #checkpoint to load for stage fine (should be a path of ply with deform pth)
 load_path: 
 load_step: 
@@ -84,7 +84,7 @@ init_steps: 700
 
 percent_dense: 0.1
 density_start_iter: 1200
-density_end_iter: 8500
+density_end_iter: 7000
 densification_interval: 100
 opacity_reset_interval: 700
 densify_grad_threshold: 20

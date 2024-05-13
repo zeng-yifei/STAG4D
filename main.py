@@ -608,7 +608,7 @@ class GUI:
         samples=torch.cat(images,dim=0)
         
         vid = (
-            (rearrange(samples, "t c h w -> t h w c") * 255).detach()
+            (rearrange(samples, "t c h w -> t h w c") * 255).clamp(0,255).detach()
             .cpu()
             .numpy()
             .astype(np.uint8)
