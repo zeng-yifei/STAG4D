@@ -84,7 +84,7 @@ init_steps: 700
 
 percent_dense: 0.1
 density_start_iter: 1200
-density_end_iter: 7000
+density_end_iter: 6000
 densification_interval: 100
 opacity_reset_interval: 700
 densify_grad_threshold: 20

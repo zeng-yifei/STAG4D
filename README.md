@@ -95,3 +95,6 @@ If you find our work useful for your research, please consider citing our paper 
       primaryClass={cs.CV}
 }
 ```
+
+#Acknowledgment
+This repo is built on [DreamGaussian](https://github.com/dreamgaussian/dreamgaussian) and [Zero123plus](https://github.com/SUDO-AI-3D/zero123plus). Thank all the authors for their great work.
