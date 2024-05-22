@@ -66,6 +66,10 @@ python scripts/gen_mv.py --path dataset/your_data --pipeline_path xxx/guidance/z
 python main.py --config configs/stag4d.yaml path=data_path save_path=saving_path gui=True
 ```
 
+To visualize the result, use you can replace the main.py with visualize.py, and the result will be saved to the valid/xxx path, e.g.:
+```bash
+python visualize.py --config configs/stag4d.yaml path=dataset/minions save_path=minions
+```
 
 <img src='assets/videoto4d.gif' height='60%'>
 
