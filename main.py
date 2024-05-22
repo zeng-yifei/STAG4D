@@ -242,20 +242,6 @@ class GUI:
                 self.renderer.gaussians.save_deformation(auto_path)
                 
             
-            ## sampling time y
-            if self.init:
-                self.t = self.frames//2
-                self.time = self.t/self.frames
-            else:   
-                self.t = np.random.randint(0,self.frames)
-                self.time = self.t/self.frames
-
-            self.input_img_torch =   self.input_img_torch_batch[self.t]
-            self.input_mask_torch =  self.input_mask_torch_batch[self.t]
-            self.zero123plus_imgs_torch =  self.zero123plus_imgs_torch_batch[self.t]
-            self.zero123plus_masks_torch = self.zero123plus_masks_torch_batch[self.t]
-
-
             if self.step>self.opt.position_lr_max_steps:
                 self.opt.position_lr_max_steps = self.opt.position_lr_max_steps2
 
@@ -270,27 +256,10 @@ class GUI:
 
             loss = 0
             
-            if self.step%self.opt.valid_interval == 10:
+            if self.step%self.opt.valid_interval == 0:
                 self.save_renderings( 0, 0, 2 ,'front')
                 self.save_renderings( 180, 0, 2 ,'back')
                 
-            if self.input_img_torch is not None:
-                cur_cam = self.fixed_cam
-                cur_cam.time=self.time
-                #print(self.t)
-                out = self.renderer.render(cur_cam,stage=self.stage)
-                viewspace_point_tensor, visibility_filter, radii = out["viewspace_points"], out["visibility_filter"], out["radii"]  
-                radii_list.append(radii.unsqueeze(0))
-                visibility_filter_list.append(visibility_filter.unsqueeze(0))
-                viewspace_point_tensor_list.append(viewspace_point_tensor)
-                # rgb loss
-                image = out["image"].unsqueeze(0) # [1, 3, H, W] in [0, 1]
-                image_loss =step_ratio* 20000*  F.mse_loss(image, self.input_img_torch)
-                loss = loss + image_loss
-                
-                alpha = out["alpha"].unsqueeze(0)
-                alpha_loss = step_ratio* 5000*  F.mse_loss(alpha, self.input_mask_torch)
-                loss = loss + alpha_loss
 
             render_resolution = 128 if step_ratio < 0.3 else (256 if step_ratio < 0.6 else 512)
 
@@ -313,7 +282,25 @@ class GUI:
                 self.input_mask_torch =  self.input_mask_torch_batch[self.t]
                 self.zero123plus_imgs_torch =  self.zero123plus_imgs_torch_batch[self.t]
                 self.zero123plus_masks_torch = self.zero123plus_masks_torch_batch[self.t]
-
+                
+                ## need to do rgb loss in the batch
+                cur_cam = self.fixed_cam
+                cur_cam.time=self.time
+                
+                out = self.renderer.render(cur_cam,stage=self.stage)
+                viewspace_point_tensor, visibility_filter, radii = out["viewspace_points"], out["visibility_filter"], out["radii"]  
+                radii_list.append(radii.unsqueeze(0))
+                visibility_filter_list.append(visibility_filter.unsqueeze(0))
+                viewspace_point_tensor_list.append(viewspace_point_tensor)
+                # rgb loss
+                image = out["image"].unsqueeze(0) # [1, 3, H, W] in [0, 1]
+                image_loss =step_ratio* 20000*  F.mse_loss(image, self.input_img_torch)
+                loss = loss + image_loss
+                
+                alpha = out["alpha"].unsqueeze(0)
+                alpha_loss = step_ratio* 5000*  F.mse_loss(alpha, self.input_mask_torch)
+                loss = loss + alpha_loss
+                
                 images = []
                 poses = []
                 vers, hors, radii = [], [], []
