@@ -25,6 +25,11 @@
   <a href="https://nju-3dv.github.io/projects/STAG4D/" target='_blank'>[Project Page]</a> •
 </h4>
 
+# Update
+
+5.26: Update Text/Image to 4D data below.
+5.21: Fix RGB loss into the batch loop. Add visualize code.
+
 
 # ⚙️ Installation
 
@@ -76,6 +81,19 @@ python visualize.py --config configs/stag4d.yaml path=dataset/minions save_path=
 # Text-to-4D
 For Text to 4D generation, we recommend using SDXL and SVD to generate a reasonable video. Then, after matting the video, use
 the command above to generate a good 4D result. (This pipeline contains many independent parts and is kind of complex, so we may upload the whole workflow after integration if possible.)
+
+If you want generate the examples in the paper, I also updated the corresponding data here in [google drive](https://drive.google.com/file/d/1EDNL7EBMR1vlfMOABdXjHzcKY7IXdcnj/view?usp=sharing). Remember to set size to 26 in config or use `size=26` in the command:
+
+```bash
+python main.py --config configs/stag4d.yaml path=dataset/xxx save_path=xxx size=26
+```
+
+
+# Tips for better quality
+If you want sacrifice time for better quality, here is some tips you can try to further improve the generated quality.
+1, Use larger batch size.
+2, Run for more steps.
+
 <img src='assets/textto4d3.gif' height='60%'>
 
 ## Citation
