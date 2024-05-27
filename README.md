@@ -93,7 +93,9 @@ python main.py --config configs/stag4d.yaml path=dataset/xxx save_path=xxx size=
 
 # Tips for better quality
 If you want sacrifice time for better quality, here is some tips you can try to further improve the generated quality.
+
 1, Use larger batch size.
+
 2, Run for more steps.
 
 ## Citation
