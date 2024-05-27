@@ -28,6 +28,7 @@
 # Update
 
 5.26: Update Text/Image to 4D data below.
+
 5.21: Fix RGB loss into the batch loop. Add visualize code.
 
 
@@ -88,13 +89,12 @@ If you want generate the examples in the paper, I also updated the corresponding
 python main.py --config configs/stag4d.yaml path=dataset/xxx save_path=xxx size=26
 ```
 
+<img src='assets/textto4d3.gif' height='60%'>
 
 # Tips for better quality
 If you want sacrifice time for better quality, here is some tips you can try to further improve the generated quality.
 1, Use larger batch size.
 2, Run for more steps.
-
-<img src='assets/textto4d3.gif' height='60%'>
 
 ## Citation
 If you find our work useful for your research, please consider citing our paper as well as Consistent4D:
