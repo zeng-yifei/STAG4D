@@ -568,18 +568,18 @@ class GaussianModel:
 
         self.densification_postfix(new_xyz, new_features_dc, new_features_rest, new_opacities, new_scaling, new_rotation, new_deformation_table)
 
-    def densify_and_prune(self, max_grad, min_opacity, extent, max_screen_size):
+    def densify_and_prune(self, max_grad_percent, min_opacity, extent, max_screen_size):
         grads = self.xyz_gradient_accum / self.denom
         grads[grads.isnan()] = 0.0
         grad_log = torch.log(grads)
         grad_log2=grad_log[~grad_log.isnan()]
         grad_log3=grad_log[~grad_log2.isinf()]
 
-        max_grad_1 = torch.exp(grad_log3.mean()+grad_log3.var()) #adaptive densification with mean and var
-        max_grad_2 = torch.exp(grad_log3.squeeze(dim=1).sort(descending=True)[0][int(0.025*grad_log3.shape[0])]) #adaptive densification with relative grad
-        max_grad = max_grad_2 #choose which to use: max_grad(original), max_grad_1, max_grad_2
+        max_grad_1 = torch.exp(grad_log3.mean()+grad_log3.var()) #adaptive densification with mean and var, unused
+        max_grad_2 = torch.exp(grad_log3.squeeze(dim=1).sort(descending=True)[0][int(max_grad_percent*grad_log3.shape[0])]) #adaptive densification with relative grad
+        max_grad = max_grad_2 #choose which to use
 
-        #print('max_grad',max_grad,max_grad_1,max_grad_2,grad_log3.mean(),grad_log3.var())
+        #print('max_grad',max_grad_percent,max_grad_1,max_grad_2,grad_log3.mean(),grad_log3.var())
         self.densify_and_clone(grads, max_grad, extent)
         self.densify_and_split(grads, max_grad, extent)
 
