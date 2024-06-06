@@ -396,7 +396,7 @@ class GUI:
                 self.renderer.gaussians.add_densification_stats(viewspace_point_tensor_grad, visibility_filter)
                 if self.step % self.opt.densification_interval == 1 :
 
-                    self.renderer.gaussians.densify_and_prune(self.opt.densify_grad_threshold, min_opacity=0.01, extent=1, max_screen_size=2)
+                    self.renderer.gaussians.densify_and_prune(self.opt.densify_grad_threshold_percent, min_opacity=0.01, extent=1, max_screen_size=2)
 
 
 
