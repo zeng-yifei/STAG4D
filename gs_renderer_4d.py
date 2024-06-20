@@ -885,7 +885,7 @@ class Renderer:
         shs = self.gaussians.get_features
 
         # Rasterize visible Gaussians to image, obtain their radii (on screen).
-        rendered_image, rendered_depth, rendered_alpha, radii = rasterizer(
+        rendered_image, rendered_depth, normal, rendered_alpha ,radii, _ = rasterizer(
         means3D = means3D_final,
         means2D = means2D,
         shs = shs,
@@ -893,7 +893,7 @@ class Renderer:
         opacities = opacity_final,
         scales = scales_final,
         rotations = rotations_final,
-        cov3D_precomp = cov3D_precomp)
+        cov3Ds_precomp = cov3D_precomp)
 
 
         return {

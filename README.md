@@ -27,6 +27,8 @@
 
 # Update
 
+6.20: IMPORTANT. Fix the bug caused by new version of diff_gauss. Newest version of diff_gauss use `color, depth, norm, alpha, radii, extra` as an output. However, previous version use `color, depth, alpha, radii` as an output. Using older version of this code will cause mismatch error and may misuse normal for the alpha loss, resulting in bad results.
+
 5.26: Update Text/Image to 4D data below.
 
 5.21: Fix RGB loss into the batch loop. Add visualize code.

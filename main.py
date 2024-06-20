@@ -303,7 +303,7 @@ class GUI:
                 
                 images = []
                 poses = []
-                vers, hors, radii = [], [], []
+
                 vers_plus, hors_plus, radii_plus = [], [], []
                 self.guidance_zero123.update_step(1,self.step)
                 # render random view
@@ -311,9 +311,7 @@ class GUI:
                 hor = np.random.randint(-180, 180)
                 radius = 0
                 
-                vers.append(ver)
-                hors.append(hor)
-                radii.append(radius)
+
                 
 
 
