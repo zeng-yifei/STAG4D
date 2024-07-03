@@ -1,4 +1,4 @@
-<h1>STAG4D: Spatial-Temporal Anchored Generative 4D Gaussians</h1>
+<h1>[ECCV 2024] STAG4D: Spatial-Temporal Anchored Generative 4D Gaussians</h1>
 
 <div>
     <a href='https://github.com/zeng-yifei?tab=repositories/' target='_blank'>Yifei Zeng</a><sup>1</sup>&emsp;
@@ -26,6 +26,7 @@
 </h4>
 
 # Update
+7.4 Our paper has been accepted by ECCV 2024. Congrats!
 
 6.20: IMPORTANT. Fix the bug caused by new version of diff_gauss. Newest version of diff_gauss use `color, depth, norm, alpha, radii, extra` as an output. However, previous version use `color, depth, alpha, radii` as an output. Using older version of this code will cause mismatch error and may misuse normal for the alpha loss, resulting in bad results.
 
