@@ -40,7 +40,7 @@ scale_loss_ratio: 7.5
 imagedream: False
 
 # training batch size per iter
-batch_size: 3
+batch_size: 4
 # training iterations for stage 1
 iters: 2000
 # training iterations for stage 2
